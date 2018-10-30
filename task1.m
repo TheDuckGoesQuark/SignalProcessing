@@ -29,20 +29,19 @@ zoom xon;
 zoom(100);
 
 % Calculate frequency domain
-fourierTransform = fft(signal);
-fourierTransform = fftshift(fourierTransform);
-
-magnitudeAxis = abs(fourierTransform);
-frequencyAxis = abs(sampleFrequency / 2 * linspace(-1, 1, sampleFrequency * 2));
+fourierTransform = fft(signal) / length(signal);
+fourierTransform = fftshift(abs(fourierTransform) * 2);
+amplitudeAxis = fourierTransform;
+frequencyAxis = sampleFrequency / 2 * linspace(-1, 1, sampleFrequency * 2);
 
 % Plotting frequency domain
 ax2 = subplot(2, 1, 2);
-plot(frequencyAxis, magnitudeAxis);
+plot(frequencyAxis, amplitudeAxis);
 xlabel('Frequency (Hz)');
 ylabel('Magnitude');
 title('Frequency Domain of Middle C');
 zoom xon;
 zoom(10000);
 axis auto;
-xlim(ax2, [0 300]);
+xlim(ax2, [200 300]); % Nothing special outside of this range
 
