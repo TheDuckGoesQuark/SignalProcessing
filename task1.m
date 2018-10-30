@@ -1,4 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TASK 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+clear;
 
 % To plot and generate a sound, we need a sample frequency and a duration.
 % Sample frequency must be at least double the maximum frequency of the
@@ -7,9 +8,8 @@ middleCFreq = 261.6;
 
 sampleFrequency = 48*10^3; % Sample rate used in high quality music
 sampleDuration = 1 / sampleFrequency;
-totalDuration = 2;
+totalDuration = 10;
 timeAxis = 0:sampleDuration:totalDuration-sampleDuration;
-
 
 % w = 2.pi.f
 % y = A.sin(w.t+theta)
@@ -32,7 +32,10 @@ zoom(100);
 fourierTransform = fft(signal) / length(signal);
 fourierTransform = fftshift(abs(fourierTransform) * 2);
 amplitudeAxis = fourierTransform;
-frequencyAxis = sampleFrequency / 2 * linspace(-1, 1, sampleFrequency * 2);
+frequencyAxis = sampleFrequency / 2 * linspace(-1, 1, sampleFrequency * totalDuration);
+
+% Noted, reducing the duration of the sound decreases the accuracy of the
+% fft
 
 % Plotting frequency domain
 ax2 = subplot(2, 1, 2);
@@ -43,5 +46,5 @@ title('Frequency Domain of Middle C');
 zoom xon;
 zoom(10000);
 axis auto;
-xlim(ax2, [200 300]); % Nothing special outside of this range
+xlim(ax2, [250 270]); % Nothing special outside of this range
 

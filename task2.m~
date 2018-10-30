@@ -1,8 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TASK 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 clear;
 
-%%%%%%%%%%%%%%%%%%%% Voice File %%%%%%%%%%%%%%%%%%%%%
-
 filename='malcolm_x_by_any_means1.wav';
 [signal, sampleFrequency] = audioread(filename);
 signal = trimToTenSecs(signal, sampleFrequency);
@@ -18,12 +16,12 @@ timeAxis = 0:sampleDuration:totalDuration-sampleDuration;
 %play(soundObj);
 
 % Plotting time domain
-figure(1)
+figure(figureNum)
 ax1 = subplot(2, 1, 1);
 plot(timeAxis, signal);
 xlabel('Time (s)');
 ylabel('Amplitude (m)');
-title('Time Domain of my voice');
+title(='Time Domain of my voice');
 zoom xon;
 
 % Calculate frequency domain
@@ -31,21 +29,17 @@ fourierTransform = fft(signal);
 fourierTransform = fftshift(fourierTransform);
 magnitudeAxis = abs(fourierTransform);
 frequencyAxis = sampleFrequency / 2 * linspace(-1, 1, sampleFrequency * totalDuration);
-frequencyAxis = frequencyAxis / 1000;
 
 % Plotting frequency domain
 ax2 = subplot(2, 1, 2);
 plot(frequencyAxis, magnitudeAxis);
-xlabel('Frequency (kHz)');
+xlabel('Frequency (Hz)');
 ylabel('Magnitude');
-title('Frequency Domain of my voice');
+title(strcat('Frequency Domain of ', fileTitle));
 zoom xon;
 zoom(10000);
 axis auto;
 xlim(ax2, [0 inf]);
-
-%%%%%%%%%%%%%%%%%%%% Music File %%%%%%%%%%%%%%%%%%%%%
-
 filename='mii-channel-music.mp3';
 [signal, sampleFrequency] = audioread(filename);
 
@@ -62,12 +56,12 @@ timeAxis = 0:sampleDuration:totalDuration-sampleDuration;
 %play(soundObj);
 
 % Plotting time domain
-figure(2)
+figure(figureNum)
 ax1 = subplot(2, 1, 1);
 plot(timeAxis, signal);
 xlabel('Time (s)');
 ylabel('Amplitude (m)');
-title('Time Domain of Mii Channel Music');
+title(strcat('Time Domain of ', fileTitle));
 zoom xon;
 
 % Calculate frequency domain
@@ -75,14 +69,13 @@ fourierTransform = fft(signal);
 fourierTransform = fftshift(fourierTransform);
 magnitudeAxis = abs(fourierTransform);
 frequencyAxis = sampleFrequency / 2 * linspace(-1, 1, sampleFrequency * totalDuration);
-frequencyAxis = frequencyAxis / 1000;
 
 % Plotting frequency domain
 ax2 = subplot(2, 1, 2);
 plot(frequencyAxis, magnitudeAxis);
-xlabel('Frequency (kHz)');
+xlabel('Frequency (Hz)');
 ylabel('Magnitude');
-title('Frequency Domain of Mii Channel Music');
+title(strcat('Frequency Domain of ', fileTitle));
 zoom xon;
 zoom(10000);
 axis auto;
