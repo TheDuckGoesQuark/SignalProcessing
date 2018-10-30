@@ -1,65 +1,11 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TASK 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-clear;
-
 %%%%%%%%%%%%%%%%%%%% Voice File %%%%%%%%%%%%%%%%%%%%%
 
 filename='malcolm_x_by_any_means1.wav';
 [signal, sampleFrequency] = audioread(filename);
-signal = trimToTenSecs(signal, sampleFrequency);
-
-%soundObj = audioplayer(signal, sampleRate);
-%play(soundObj);
 
 sampleDuration = 1 / sampleFrequency;
 totalDuration = length(signal) * sampleDuration;
 timeAxis = 0:sampleDuration:totalDuration-sampleDuration;
-
-%soundObj = audioplayer(amplitudeAxis, sampleFrequency);
-%play(soundObj);
-
-% Plotting time domain
-figure(1)
-ax1 = subplot(2, 1, 1);
-plot(timeAxis, signal);
-xlabel('Time (s)');
-ylabel('Amplitude (m)');
-title('Time Domain of my voice');
-zoom xon;
-
-% Calculate frequency domain
-fourierTransform = fft(signal);
-fourierTransform = fftshift(fourierTransform);
-magnitudeAxis = abs(fourierTransform);
-frequencyAxis = sampleFrequency / 2 * linspace(-1, 1, sampleFrequency * totalDuration);
-frequencyAxis = frequencyAxis / 1000;
-
-% Plotting frequency domain
-ax2 = subplot(2, 1, 2);
-plot(frequencyAxis, magnitudeAxis);
-xlabel('Frequency (kHz)');
-ylabel('Magnitude');
-title('Frequency Domain of my voice');
-zoom xon;
-zoom(10000);
-axis auto;
-xlim(ax2, [0 inf]);
-
-%%%%%%%%%%%%%%%%%%%% Music File %%%%%%%%%%%%%%%%%%%%%
-
-filename='mii-channel-music.mp3';
-[signal, sampleFrequency] = audioread(filename);
-
-signal = trimToTenSecs(signal, sampleFrequency);
-signal = convertToMono(signal);
-%soundObj = audioplayer(signal, sampleRate);
-%play(soundObj);
-
-sampleDuration = 1 / sampleFrequency;
-totalDuration = length(signal) * sampleDuration;
-timeAxis = 0:sampleDuration:totalDuration-sampleDuration;
-
-%soundObj = audioplayer(amplitudeAxis, sampleFrequency);
-%play(soundObj);
 
 % Plotting time domain
 figure(2)
@@ -67,42 +13,32 @@ ax1 = subplot(2, 1, 1);
 plot(timeAxis, signal);
 xlabel('Time (s)');
 ylabel('Amplitude (m)');
+title('Time Domain of my voice');
+zoom xon;
+
+soundObj = audioplayer(signal, sampleFrequency);
+%play(soundObj);
+%pause(10);
+%%%%%%%%%%%%%%%%%%%% Music File %%%%%%%%%%%%%%%%%%%%%
+
+filename='mii-channel-music.mp3';
+[signal, sampleFrequency] = audioread(filename);
+
+signal = trimToSecs(signal, sampleFrequency, 9);
+signal = convertToMono(signal);
+
+sampleDuration = 1 / sampleFrequency;
+totalDuration = length(signal) * sampleDuration;
+timeAxis = 0:sampleDuration:totalDuration-sampleDuration;
+
+% Plotting time domain
+ax1 = subplot(2, 1, 2);
+plot(timeAxis, signal);
+xlabel('Time (s)');
+ylabel('Amplitude (m)');
 title('Time Domain of Mii Channel Music');
 zoom xon;
 
-% Calculate frequency domain
-fourierTransform = fft(signal);
-fourierTransform = fftshift(fourierTransform);
-magnitudeAxis = abs(fourierTransform);
-frequencyAxis = sampleFrequency / 2 * linspace(-1, 1, sampleFrequency * totalDuration);
-frequencyAxis = frequencyAxis / 1000;
-
-% Plotting frequency domain
-ax2 = subplot(2, 1, 2);
-plot(frequencyAxis, magnitudeAxis);
-xlabel('Frequency (kHz)');
-ylabel('Magnitude');
-title('Frequency Domain of Mii Channel Music');
-zoom xon;
-zoom(10000);
-axis auto;
-xlim(ax2, [0 inf]);
-    
-function signal = convertToMono(signal)
-    signal = sum(signal, 2) / size(signal, 2);
-end
-
-function signal = trimToTenSecs(signal, sampleFrequency) 
-    sampleDuration = 1 / sampleFrequency;
-    numberOfSamples = 10 / sampleDuration;
-    signal = signal(1:numberOfSamples)';
-end
-
-function plotFully(signal, sampleFrequency, figureNum, fileTitle)
-
-end
-
-
-
-
-% Audioread, plot, fft,ifft, audioplayer, play, audiowrite, saveas, hist
+soundObj = audioplayer(signal, sampleFrequency);
+play(soundObj);
+pause(10);
