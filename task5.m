@@ -7,9 +7,6 @@ filename='malcolm_x_by_any_means1.wav';
 [signal, sampleFrequency] = audioread(filename);
 signal = trimToTenSecs(signal, sampleFrequency);
 
-%soundObj = audioplayer(signal, sampleRate);
-%play(soundObj);
-
 sampleDuration = 1 / sampleFrequency;
 totalDuration = length(signal) * sampleDuration;
 timeAxis = 0:sampleDuration:totalDuration-sampleDuration;

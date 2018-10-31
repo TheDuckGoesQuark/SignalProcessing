@@ -16,9 +16,8 @@ ylabel('Amplitude (m)');
 title('Time Domain of my voice');
 zoom xon;
 
-soundObj = audioplayer(signal, sampleFrequency);
-%play(soundObj);
-%pause(10);
+playSignal(signal, sampleFrequency, totalDuration);
+
 %%%%%%%%%%%%%%%%%%%% Music File %%%%%%%%%%%%%%%%%%%%%
 
 filename='mii-channel-music.mp3';
@@ -39,6 +38,5 @@ ylabel('Amplitude (m)');
 title('Time Domain of Mii Channel Music');
 zoom xon;
 
-soundObj = audioplayer(signal, sampleFrequency);
-play(soundObj);
-pause(10);
+playSignal(signal, sampleFrequency, totalDuration);
+

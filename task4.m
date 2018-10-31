@@ -1,4 +1,4 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TASK 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TASK 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 clear;
 
 %%%%%%%%%%%%%%%%%%%% Voice File %%%%%%%%%%%%%%%%%%%%%
@@ -12,24 +12,39 @@ totalDuration = length(signal) * sampleDuration;
 % Calculate frequency domain
 fourierTransform = fft(signal);
 fourierTransform = fftshift(fourierTransform);
-
 frequencyAxis = sampleFrequency / 2 * linspace(-1, 1, sampleFrequency * totalDuration);
-fourierTransform = filterSubBand(fourierTransform, frequencyAxis, 0, 1000);
+
+% Remove frequencies inside of sub band
+fourierTransform = filterSubBand(fourierTransform, frequencyAxis, 1000, 2000);
+
+% Produce axis for plotting
 magnitudeAxis = abs(fourierTransform);
 frequencyAxis = frequencyAxis / 1000;
 
-
 % Plotting frequency domain
 figure(3)
-ax2 = subplot(2, 1, 1);
+ax2 = subplot(2, 2, 1);
 plot(frequencyAxis, magnitudeAxis);
 xlabel('Frequency (kHz)');
 ylabel('Magnitude');
-title('Frequency Domain of my voice');
+title('Frequency Domain of my filtered voice');
 zoom xon;
 zoom(10000);
 axis auto;
 xlim(ax2, [0 inf]);
+
+% Convert frequency domain back to time domain
+signal = ifft(ifftshift(fourierTransform));
+timeAxis = 0:sampleDuration:totalDuration-sampleDuration;
+
+ax1 = subplot(2, 2, 2);
+plot(timeAxis, signal);
+xlabel('Time (s)');
+ylabel('Amplitude (m)');
+title('Time Domain of filtered voice');
+zoom xon;
+
+playSignal(signal, sampleFrequency, totalDuration)
 
 %%%%%%%%%%%%%%%%%%%% Music File %%%%%%%%%%%%%%%%%%%%%
 

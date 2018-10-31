@@ -15,8 +15,7 @@ timeAxis = 0:sampleDuration:totalDuration-sampleDuration;
 % y = A.sin(w.t+theta)
 signal = sin(2*pi*middleCFreq*timeAxis);
 
-%soundObj = audioplayer(amplitudeAxis, sampleFrequency);
-%play(soundObj);
+playSignal(signal, sampleFrequency, totalDuration);
 
 % Plotting time domain
 figure(1)

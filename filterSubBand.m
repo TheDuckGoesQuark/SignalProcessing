@@ -1,7 +1,7 @@
+% Custom filter function, removes all frequencies inside of the given band
 function fourierTransform = filterSubBand(fourierTransform, frequencyAxis, lowerRange, upperRange)
-    frequencyAxis(frequencyAxis <= lowerRange) = 0;
-    frequencyAxis(frequencyAxis >= upperRange) = 0;
+    frequencyAxis(frequencyAxis >= lowerRange & frequencyAxis <= upperRange) = 0;
+    frequencyAxis(frequencyAxis <= -lowerRange & frequencyAxis >= -upperRange) = 0;
     frequencyAxis(frequencyAxis ~= 0) = 1;
-    fourierTransform = fourierTransform * frequencyAxis;
-    pause(1);
+    fourierTransform = fourierTransform .* frequencyAxis';
 end
