@@ -44,8 +44,7 @@ sampleDuration = 1 / sampleFrequency;
 totalDuration = length(signal) * sampleDuration;
 timeAxis = 0:sampleDuration:totalDuration-sampleDuration;
 
-% fourierTransform = customBandPass(fourierTransform, frequencyAxis*1000, 0, 7000);
-signal = builtInBandPass(signal, sampleFrequency, 1, 500);
+signal = bandstop(signal, [7400 7600], sampleFrequency); % Removes main noise
 
 % Calculate frequency domain
 fourierTransform = fft(signal);
@@ -71,4 +70,9 @@ xlim(ax2, [0 inf]);
 signal = ifft(ifftshift(fourierTransform));
 
 playSignal(signal, sampleFrequency, totalDuration)
+
+% Good but can we do better?
+
+signal = builtInBandPass(signal, sampleFrequency, 1, 200);
+playSignal(signal, sampleFrequency, totalDuration);
 
