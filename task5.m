@@ -18,6 +18,6 @@ zoom xon;
 zoom(10000);
 axis auto;
 
-% playSignal(signal, sampleFrequency, totalDuration);
+playSignal(signal, sampleFrequency);
 
 % Demon noise at 7500 Hz.
