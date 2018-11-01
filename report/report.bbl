@@ -1,40 +1,8 @@
 \begin{thebibliography}{1}
 
-\bibitem{peterson_1981}
-G.L. Peterson.
-\newblock Myths about the mutual exclusion problem.
-\newblock {\em Information Processing Letters}, 12(3):115--116, 1981.
-
-\bibitem{hutton_2008}
-D.M. Hutton.
-\newblock The art of multiprocessor programming20083maurice herlihy and nir
-  shavit. the art of multiprocessor programming. morgan kaufmann, 2008. 528 pp.
-  price and further information: www.mkp.com, isbn: 978-0-12-370591-4.
-\newblock {\em Kybernetes}, 37(9/10):1583--1584, 2008.
-
-\bibitem{raynal_2012}
-Michel Raynal.
-\newblock Concurrent programming: Algorithms, principles, and foundations.
-\newblock {\em Springer Science \& Business Media}, 2012.
-
-\bibitem{huth_ryan_2015}
-Michael Huth and Mark~D Ryan.
-\newblock {\em Logic in computer science}.
-\newblock Cambridge University Press, 2015.
-
 \bibitem{gerardo_schneider}
 Gerardo Schneider.
 \newblock Promela semantics lecture 8.
 \newblock 2007.
-
-\bibitem{holzmann_1997}
-G.J. Holzmann.
-\newblock The model checker spin.
-\newblock {\em IEEE Transactions on Software Engineering}, 23(5):279--295,
-  1997.
-
-\bibitem{michael_westergaard}
-Michael Westergaard.
-\newblock Hash compaction and bit-state hashing.
 
 \end{thebibliography}
