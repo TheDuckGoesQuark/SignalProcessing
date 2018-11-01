@@ -21,7 +21,7 @@ magnitudeAxis = abs(fourierTransform);
 frequencyAxis = frequencyAxis / 1000;
 
 % Plotting frequency domain
-figure(4)
+figure(5)
 ax2 = subplot(2, 2, 1);
 plot(frequencyAxis, magnitudeAxis);
 xlabel('Frequency (kHz)');

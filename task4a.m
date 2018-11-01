@@ -92,5 +92,3 @@ title('Time Domain of filtered Mii Channel Music');
 zoom xon;
 
 playSignal(signal, sampleFrequency, totalDuration)
-
-% Audioread, plot, fft,ifft, audioplayer, play, audiowrite, saveas, hist
