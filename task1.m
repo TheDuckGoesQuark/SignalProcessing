@@ -12,7 +12,7 @@ totalDuration = 10;
 [signal, timeAxis] = generateSignal(middleCFreq, sampleFrequency, totalDuration);
 
 % Plotting time domain
-figure(1)
+fig1 = figure(1)
 ax1 = subplot(2, 1, 1);
 plot(timeAxis, signal);
 xlabel('Time (s)');
@@ -38,4 +38,5 @@ xlim(ax2, [0, 300]);
 
 playSignal(signal, sampleFrequency);
 
+% saveas(fig1, "figure1.png", "png");
 

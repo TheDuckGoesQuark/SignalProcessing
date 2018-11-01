@@ -85,10 +85,36 @@
 
 \end{titlepage}
 
-\section*{Description}
+\part*{Goal}
 
-hello \citep{gerardo_schneider}
+The goal of this practical was to learn through practice various aspects of audio signal processing, through the technology of Matlab\textsuperscript{\textregistered}.  
 
+\part*{Tasks}
+
+The scripts are seperated by task given in the practical specification. Where useful, scripts were created to hold functions that were used repeatedly. To run each practical task in order, the script \emph{practical.m} can be used. Figures and sounds will be generated whilst each script runs. Some tasks were implemented in two ways, and can be identified by the alphabetic letter following the number of the task in the script name.
+
+\section{Middle C}
+
+Middle C is approximately 261.6Hz, though concert pitch has varied historically. To plot this, a sine wave of the same frequency was generated. 
+
+Originally a sampling frequency of $2f$ was used, as Nyquist theorem dictates that the sampling rate must be at least double the highest frequency in the signal. However, MATLAB refused to play at this rate, and even at $3f$ and the only error stated that the sample rate was 'invalid'. So instead, I opted for the sample rate used for most high quality music, $48\times10^3$ Hz. 
+
+The number of samples required could then be 
+
+\begin{figure}[h]
+  \includegraphics[width=\linewidth]{images/figure1.png}
+  \caption{Time and Frequency domain of Middle C}
+  \label{fig:middlec}
+\end{figure}
+
+\section{Time Domain}
+\section{Frequency Domain}
+\section{Frequency Filtering}
+\section{Identifying Noise}
+\section{Removing Noise}
+\section{Extension}
+
+\citep{gerardo_schneider}
 \bibliographystyle{unsrt}
 \bibliography{mybib}
 

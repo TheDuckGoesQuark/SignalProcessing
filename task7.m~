@@ -1,9 +1,0 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TASK 7 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-clear;
-
-%%%%%%%%%%%%%%%%%%%% Voice File %%%%%%%%%%%%%%%%%%%%%
-
-filename='audio_in_noise.wav';
-[signal, sampleFrequency] = audioread(filename);
-signal = lowpass(signal, 4000, sampleFrequency);
-
