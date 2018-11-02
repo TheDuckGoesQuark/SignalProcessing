@@ -243,9 +243,9 @@ The alternative approach involved using a low pass filter to remove everything b
 
 \section{Extension}
 
-For the extension, and now with some confidence in my Matlab abilities, I tried to implement time-domain scrambling. To do so, I first declared how large my frames should be in seconds. I then calculated how many samples per frame, and used this to break the signal into frames. 
+Now that I had gained some confidence in my understanding of Matlab , I tried to implement time-domain scrambling as an extension. To do so, I first declared how large my frames should be in seconds. I then calculated how many samples per frame, and used this to break the signal into frames. 
 
-For the scrambling key, I created a numbered list from 1 to the number of frames, and then reordered them. The scrambled signal matrix was then constructed by appending the frame in the row number given by the scrambling key. Listening back, I can still identify parts of speech, but all meaning is lost.
+For the scrambling key, I created a numbered list from 1 to the number of frames, and then reordered them. The scrambled signal matrix was then constructed by appending the frame in the row number given by the scrambling key. Listening back, I can still identify parts of speech, but all meaning is lost. Using the \emph{vertcat} function instead of iteratively appending the samples resulted in an incredibly large performance boost, which highlighted the effectiveness of Matlab for this sort of processing. The before and after effect of scrambling on the time domain plot can be seen in Figure \ref{fig:scrambled}. The same scrambling matrix could then be used to inverse the scrambling through a similar process, though the padding used to extend the signals to the same length for plotting would have to also be avoided as it would introduce silence to the middle of the audio.
 
 \begin{figure}[!ht]
   \includegraphics[width=\linewidth]{images/scrambled.png}
@@ -253,7 +253,10 @@ For the scrambling key, I created a numbered list from 1 to the number of frames
   \label{fig:scrambled}
 \end{figure}
 
-\pagebreak
+\part*{Conclusion}
+
+This practical was incredibly enjoyable (excluding the whine), and greatly helped my understanding of Matlab. Actually implementing the technologies discussed in lectures resulted in many rabbit holes of learning, and a better understanding of the content. For example, the various types of audio filters and their pros and cons, and why it isn't as simple as 'blocking' the unwanted frequencies. 
+
 \bibliographystyle{unsrt}
 \bibliography{mybib}
 

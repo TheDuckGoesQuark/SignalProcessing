@@ -60,3 +60,5 @@ zoom xon;
 
 playSignal(scrambledSignal, sampleFrequency);
 saveas(fig1, "scrambled.png", "png");
+
+% Restore the signal using the key
