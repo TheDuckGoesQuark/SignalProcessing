@@ -23,4 +23,4 @@ axis auto;
 
 % Demon noise at 7500 Hz.
 
-% saveas(fig6, "figure6.png", "png");
+saveas(fig6, "figure6.png", "png");

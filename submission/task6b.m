@@ -3,8 +3,13 @@ clear;
 filename='audio_in_noise.wav';
 [signal, sampleFrequency] = audioread(filename);
 
+
+% Generate noise as signal
+% totalDuration = (1 / sampleFrequency) * length(signal);
+% [noiseSignal, timeAxis] = generateSignal(7500, sampleFrequency, totalDuration);
+
 % Remove noise
-signal = bandstop(signal, [7400 7600], sampleFrequency);
+signal = lowpass(signal, 4000, sampleFrequency);
 
 signal = convertToMono(signal);
 sampleDuration = 1 / sampleFrequency;
@@ -33,4 +38,5 @@ title('Time Domain of audio in noise with bandstop applied.');
 zoom xon;
 
 playSignal(signal, sampleFrequency)
-% saveas(fig6a, "figure6a.png", "png")
+saveas(fig6a, "figure6b.png", "png")
+

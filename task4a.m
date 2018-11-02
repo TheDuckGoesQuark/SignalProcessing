@@ -45,7 +45,7 @@ title('Time Domain of filtered voice');
 zoom xon;
 
 playSignal(signal, sampleFrequency)
-saveas(fig4a, "figure4a.png", "png");
+% saveas(fig4a, "figure4a.png", "png");
 
 %%%%%%%%%%%%%%%%%%%% Music File %%%%%%%%%%%%%%%%%%%%%
 fig4b = figure(5);
@@ -95,4 +95,4 @@ zoom xon;
 
 playSignal(signal, sampleFrequency)
 
-saveas(fig4b, "figure4b.png", "png");
+% saveas(fig4b, "figure4b.png", "png");

@@ -10,7 +10,7 @@ signal = convertToMono(signal);
 sampleDuration = 1 / sampleFrequency;
 totalDuration = sampleDuration * length(signal);
 
-durationOfFrame = 1;
+durationOfFrame = 0.5;
 numberOfFrames = ceil(totalDuration / durationOfFrame);
 sizeOfFrame = durationOfFrame / sampleDuration;
 
@@ -39,7 +39,7 @@ end
 % Make signals same length
 signal = [signal; zeros(length(scrambledSignal) - length(signal),1)];
 
-totalDuration = sampleDuration * 
+totalDuration = sampleDuration * length(signal);
 timeAxis = 0:sampleDuration:totalDuration-sampleDuration;
 
 % Plotting time domain
@@ -58,4 +58,7 @@ ylabel('Amplitude (m)');
 title('Time Domain of my scrambled voice');
 zoom xon;
 
-% playSignal(signal, sampleFrequency);
+playSignal(scrambledSignal, sampleFrequency);
+saveas(fig1, "scrambled.png", "png");
+
+% Restore the signal using the key

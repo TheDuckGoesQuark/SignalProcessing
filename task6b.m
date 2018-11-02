@@ -38,5 +38,5 @@ title('Time Domain of audio in noise with bandstop applied.');
 zoom xon;
 
 playSignal(signal, sampleFrequency)
-saveas(fig6a, "figure6b.png", "png")
+% saveas(fig6a, "figure6b.png", "png")
 

@@ -59,6 +59,6 @@ title('Time Domain of my scrambled voice');
 zoom xon;
 
 playSignal(scrambledSignal, sampleFrequency);
-saveas(fig1, "scrambled.png", "png");
+% saveas(fig1, "scrambled.png", "png");
 
 % Restore the signal using the key

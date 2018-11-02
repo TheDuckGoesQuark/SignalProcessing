@@ -35,5 +35,5 @@ xlim(ax2, [0, 300]);
 
 playSignal(signal, sampleFrequency);
 
-% saveas(fig1, "figure1at1000.png", "png");
+saveas(fig1, "figure1at1000.png", "png");
 

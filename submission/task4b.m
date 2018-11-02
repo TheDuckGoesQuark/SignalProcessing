@@ -44,7 +44,7 @@ title('Time Domain of filtered voice');
 zoom xon;
 
 playSignal(signal, sampleFrequency)
-% saveas(fig4a, "matlabfiltervoice.png", "png");
+saveas(fig4a, "matlabfiltervoice.png", "png");
 
 %%%%%%%%%%%%%%%%%%%% Music File %%%%%%%%%%%%%%%%%%%%%
 
@@ -94,4 +94,4 @@ title('Time Domain of filtered Mii Channel Music');
 zoom xon;
 
 playSignal(signal, sampleFrequency)
-% saveas(fig4b, "matlabfiltermusic.png", "png");
+saveas(fig4b, "matlabfiltermusic.png", "png");

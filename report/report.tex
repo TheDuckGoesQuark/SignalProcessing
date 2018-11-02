@@ -241,6 +241,8 @@ The alternative approach involved using a low pass filter to remove everything b
   \label{fig:noiselowpassed}
 \end{figure}
 
+Another method I attempted was to generate a signal of the same frequency as the noise and remove it by subtraction. However, this would require also knowing the phase of the signal, which would require a lot of brute forcing, or a more thorough analysis of the output of the fft. 
+
 \section{Extension}
 
 Now that I had gained some confidence in my understanding of Matlab , I tried to implement time-domain scrambling as an extension. To do so, I first declared how large my frames should be in seconds. I then calculated how many samples per frame, and used this to break the signal into frames. 
@@ -256,6 +258,8 @@ For the scrambling key, I created a numbered list from 1 to the number of frames
 \part*{Conclusion}
 
 This practical was incredibly enjoyable (excluding the whine), and greatly helped my understanding of Matlab. Actually implementing the technologies discussed in lectures resulted in many rabbit holes of learning, and a better understanding of the content. For example, the various types of audio filters and their pros and cons, and why it isn't as simple as 'blocking' the unwanted frequencies. 
+
+I realised only close to the deadline that since on the schools Windows installs, the older version of Matlab (2017a) is used, and it did not have the bandpass function yet. However, in 2018b, it does exist, and so the scripts will only work on the linux machines. Given more time, I would have liked to replace the bandpass function with the more specific filters available, such as elliptical and chebyshev filters. 
 
 \bibliographystyle{unsrt}
 \bibliography{mybib}

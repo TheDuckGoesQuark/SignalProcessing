@@ -9,12 +9,13 @@ filename='myvoice.wav';
 sampleDuration = 1 / sampleFrequency;
 totalDuration = length(signal) * sampleDuration;
 
-signal = builtInBandPass(signal, sampleFrequency, 1000, 2500);
-
 % Calculate frequency domain
 fourierTransform = fft(signal);
 fourierTransform = fftshift(fourierTransform);
 frequencyAxis = sampleFrequency / 2 * linspace(-1, 1, sampleFrequency * totalDuration);
+
+% Remove frequencies inside of sub band
+fourierTransform = customBandPass(fourierTransform, frequencyAxis, 1000, 2500);
 
 % Produce axis for plotting
 magnitudeAxis = abs(fourierTransform);
@@ -44,10 +45,9 @@ title('Time Domain of filtered voice');
 zoom xon;
 
 playSignal(signal, sampleFrequency)
-% saveas(fig4a, "matlabfiltervoice.png", "png");
+saveas(fig4a, "figure4a.png", "png");
 
 %%%%%%%%%%%%%%%%%%%% Music File %%%%%%%%%%%%%%%%%%%%%
-
 fig4b = figure(5);
 
 filename='mii-channel-music.mp3';
@@ -56,9 +56,6 @@ filename='mii-channel-music.mp3';
 signal = trimToSecs(signal, sampleFrequency, 9);
 signal = convertToMono(signal);
 
-% Remove frequencies inside of sub band
-signal = builtInBandPass(signal, sampleFrequency, 1000, 2500);
-
 sampleDuration = 1 / sampleFrequency;
 totalDuration = length(signal) * sampleDuration;
 
@@ -66,6 +63,9 @@ totalDuration = length(signal) * sampleDuration;
 fourierTransform = fft(signal);
 fourierTransform = fftshift(fourierTransform);
 frequencyAxis = sampleFrequency / 2 * linspace(-1, 1, sampleFrequency * totalDuration);
+
+% Remove frequencies inside of sub band
+fourierTransform = customBandPass(fourierTransform, frequencyAxis, 1000, 2500);
 
 % Produce axis for plotting
 magnitudeAxis = abs(fourierTransform);
@@ -94,4 +94,5 @@ title('Time Domain of filtered Mii Channel Music');
 zoom xon;
 
 playSignal(signal, sampleFrequency)
-% saveas(fig4b, "matlabfiltermusic.png", "png");
+
+saveas(fig4b, "figure4b.png", "png");

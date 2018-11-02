@@ -8,7 +8,7 @@ totalDuration = length(signal) * sampleDuration;
 timeAxis = 0:sampleDuration:totalDuration-sampleDuration;
 
 % Plotting time domain
-fig2 = figure(2);
+fig2 = figure(2)
 ax1 = subplot(2, 1, 1);
 plot(timeAxis, signal);
 xlabel('Time (s)');
@@ -41,7 +41,7 @@ zoom xon;
 
 playSignal(signal, sampleFrequency);
 
-% saveas(fig2, "figure2b.png", "png");
+saveas(fig2, "figure2b.png", "png");
 
 
 
