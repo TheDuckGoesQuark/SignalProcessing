@@ -28,7 +28,7 @@
 \usepackage{listings}
 \usepackage{color}
 \usepackage[explicit]{titlesec}
-
+\usepackage{url}
 
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
@@ -77,7 +77,7 @@
 %	LOGO SECTION
 %---------------------------------------------------------------------------------------
 
-\includegraphics[width = 3.1cm]{standrewslogo.png}
+\includegraphics[width = 3.1cm]{images/standrewslogo.png}
  
 %----------------------------------------------------------------------------------------
 
@@ -87,27 +87,57 @@
 
 \part*{Goal}
 
-The goal of this practical was to learn through practice various aspects of audio signal processing, through the technology of Matlab\textsuperscript{\textregistered}.  
+The goal of this practical was to learn through practice various aspects of audio signal processing. Matlab\textsuperscript{\textregistered} was to be used for the processing.
 
 \part*{Tasks}
 
-The scripts are seperated by task given in the practical specification. Where useful, scripts were created to hold functions that were used repeatedly. To run each practical task in order, the script \emph{practical.m} can be used. Figures and sounds will be generated whilst each script runs. Some tasks were implemented in two ways, and can be identified by the alphabetic letter following the number of the task in the script name.
+The scripts are separated by task given in the practical specification. Where useful, scripts were created to hold functions that were used repeatedly. To run each practical task in order, the script \emph{practical.m} can be used. Figures and sounds will be generated whilst each script runs. Some tasks were implemented in two ways, and can be identified by the alphabetic letter following the number of the task in the script name.
 
 \section{Middle C}
 
 Middle C is approximately 261.6Hz, though concert pitch has varied historically. To plot this, a sine wave of the same frequency was generated. 
 
-Originally a sampling frequency of $2f$ was used, as Nyquist theorem dictates that the sampling rate must be at least double the highest frequency in the signal. However, MATLAB refused to play at this rate, and even at $3f$ and the only error stated that the sample rate was 'invalid'. So instead, I opted for the sample rate used for most high quality music, $48\times10^3$ Hz. 
+Originally a sampling frequency of $2f$ was used, as Nyquist theorem dictates that the sampling rate must be at least double the highest frequency in the signal. However, MATLAB refused to play at this rate, as the documentation states that only values of $1000Hz \leq Fs \leq 384000Hz$ are accepted by the audioplayer function \cite{matlabaudioplayer}. Instead, the sample rate used for high quality music was used instead, $48kHz$. Graphing the wave at $1000Hz$ showed a far less smooth wave in the time domain, though it did not affect the frequency domain plot (Figure \ref{fig:middleclowsample}).
 
-The number of samples required could then be 
+\begin{figure}[h]
+  \includegraphics[width=\linewidth]{images/figure1at1000.png}
+  \caption{Time and Frequency domain of Middle C at a low sample rate.}
+  \label{fig:middleclowsample}
+\end{figure}
+
+To generate ten seconds of audio, the length of a single sample was determined using the equation $$P = \frac{1}{f}$$ where $P$ is the duration in seconds and $f$ is the sample frequency in hertz. $\frac{10}{P}$ then produced the number of samples necessary to produce ten seconds of audio. 
+
+In order to produce the amplitude over time for the given frequency, we first needed to convert the frequency from hertz to radians per second using the equation $$\omega = 2 \pi f$$ Then we could use the simple harmonic oscillator equation with $\phi = 0$ and $A = 1$ to produce the displacement from equilibrium of the wave at some time $t$ 
+
+$$y = A\sin{(\omega t - \phi)}$$
+
+Matlab greatly simplified the process of producing these values over a range of time through its use of matrices as a standard data type. Out of curiosity, the value of $A$ was changed to see if the resulting sound was louder when played later, and this was confirmed to be true as expected.
+
+The time domain was then graphed, and zoomed in by a factor of 100 so that the actual wave structure was visible (Figure \ref{fig:middlec}). The unit of metres was used for the amplitude, though the perceived amplitude of the sound would actually be dependant on speakers and external settings when played.
 
 \begin{figure}[h]
   \includegraphics[width=\linewidth]{images/figure1.png}
-  \caption{Time and Frequency domain of Middle C}
+  \caption{Time and Frequency domain of Middle C at a high sample rate.}
   \label{fig:middlec}
 \end{figure}
 
+Since plotting the frequency domain was such a common task in this practical, it was abstracted into a function script \emph{frequencyDomainPlot.m}. First, the Nyquist limit was calculated using the sample frequency so that frequencies that could not exist within the signal were not plotted. Fast Fourier Transform was then applied to the signal, and shifted so that the zero frequency component was centred in the array. The magnitude axis was produced by taking the second half of values in the fft matrix and taking their absolute value. The magnitude values for negative frequencies, which were not useful for plotting, though they were necessary for inverting the fft later on. The frequency axis was generated by producing evenly spaced values from 0 to Nyquist limit. This produced the bottom graph in Figure \ref{fig:middlec}. Zooming into the graph was enabled using \emph{zoom xon}, and this showed that the peak appeared at 261Hz as hoped. Experimenting with various durations of signal also showed that this affected the accuracy of the fft, spreading the peak over a larger range of frequencies as the duration decreased (Figure \ref{fig:middlecshort}). The change in time domain plot is only due to the constant zoom being applied to a short range of x-axis values, not an actual change of frequency.
+
+\begin{figure}[h]
+  \includegraphics[width=\linewidth]{images/figure1short.png}
+  \caption{Time and Frequency domain of Middle C at a high sample rate.}
+  \label{fig:middlecshort}
+\end{figure}
+
+The sound produced had a constant intensity and absolutely no variation in pitch. The lack of any other frequencies results in a very unnatural sound.
+
 \section{Time Domain}
+
+Plotting the time domain followed a similar process as in Task 1. Instead of hard coding a sample frequency however, it was supplied by the audio file itself. 
+
+
+
+
 \section{Frequency Domain}
 \section{Frequency Filtering}
 \section{Identifying Noise}

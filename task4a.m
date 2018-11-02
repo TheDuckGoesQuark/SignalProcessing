@@ -3,7 +3,7 @@ clear;
 
 %%%%%%%%%%%%%%%%%%%% Voice File %%%%%%%%%%%%%%%%%%%%%
 
-filename='malcolm_x_by_any_means1.wav';
+filename='myvoice.wav';
 [signal, sampleFrequency] = audioread(filename);
 
 sampleDuration = 1 / sampleFrequency;

@@ -8,11 +8,11 @@ middleCFreq = 261.6;
 
 sampleFrequency = 48*10^3; % Sample rate used in high quality music
 sampleDuration = 1 / sampleFrequency;
-totalDuration = 10;
+totalDuration = 1;
 [signal, timeAxis] = generateSignal(middleCFreq, sampleFrequency, totalDuration);
 
 % Plotting time domain
-fig1 = figure(1)
+fig1 = figure(1);
 ax1 = subplot(2, 1, 1);
 plot(timeAxis, signal);
 xlabel('Time (s)');
@@ -22,9 +22,6 @@ zoom xon;
 zoom(100);
 
 [magnitudeAxis, frequencyAxis] = frequencyDomainPlot(signal, sampleFrequency);
-
-% Noted, reducing the duration of the sound decreases the accuracy of the
-% fft
 
 % Plotting frequency domain
 ax2 = subplot(2, 1, 2);
@@ -38,5 +35,5 @@ xlim(ax2, [0, 300]);
 
 playSignal(signal, sampleFrequency);
 
-% saveas(fig1, "figure1.png", "png");
+saveas(fig1, "figure1at1000.png", "png");
 

@@ -1,5 +1,10 @@
 \begin{thebibliography}{1}
 
+\bibitem{matlabaudioplayer}
+Matlab documentation.
+\newblock \url{https://uk.mathworks.com/help/matlab/ref/audioplayer.html}.
+\newblock Accessed: 2018-11-2.
+
 \bibitem{gerardo_schneider}
 Gerardo Schneider.
 \newblock Promela semantics lecture 8.
