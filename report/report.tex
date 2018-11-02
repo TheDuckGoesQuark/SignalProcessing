@@ -240,8 +240,20 @@ The alternative approach involved using a low pass filter to remove everything b
   \caption{Frequency and time domain plot of audio in noise once filtered using lowpass.}
   \label{fig:noiselowpassed}
 \end{figure}
+
 \section{Extension}
 
+For the extension, and now with some confidence in my Matlab abilities, I tried to implement time-domain scrambling. To do so, I first declared how large my frames should be in seconds. I then calculated how many samples per frame, and used this to break the signal into frames. 
+
+For the scrambling key, I created a numbered list from 1 to the number of frames, and then reordered them. The scrambled signal matrix was then constructed by appending the frame in the row number given by the scrambling key. Listening back, I can still identify parts of speech, but all meaning is lost.
+
+\begin{figure}[!ht]
+  \includegraphics[width=\linewidth]{images/scrambled.png}
+  \caption{Time domain of my voice before (top) and after (bottom) being scrambled.}
+  \label{fig:scrambled}
+\end{figure}
+
+\pagebreak
 \bibliographystyle{unsrt}
 \bibliography{mybib}
 
