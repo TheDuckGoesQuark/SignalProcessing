@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.8.22)  2 NOV 2018 16:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.8.22)  2 NOV 2018 18:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -652,56 +652,92 @@ Package pdftex.def Info: images/figure3.png used on input line 157.
 (pdftex.def)             Requested size: 390.0pt x 282.3235pt.
 
 [5 <./images/figure2a.png (PNG copy)>] [6 <./images/figure2b.png (PNG copy)>]
-<images/customfilteredvoice.png, id=47, 1445.4pt x 743.8992pt>
+[7 <./images/figure3.png (PNG copy)>]
+<images/customfilteredvoice.png, id=50, 1445.4pt x 743.8992pt>
 File: images/customfilteredvoice.png Graphic file (type png)
 
 <use images/customfilteredvoice.png>
-Package pdftex.def Info: images/customfilteredvoice.png used on input line 183.
+Package pdftex.def Info: images/customfilteredvoice.png used on input line 185.
 
 (pdftex.def)             Requested size: 390.0pt x 200.71925pt.
 
-<images/customfilteredmusic.png, id=48, 1445.4pt x 743.8992pt>
+<images/customfilteredmusic.png, id=51, 1445.4pt x 743.8992pt>
 File: images/customfilteredmusic.png Graphic file (type png)
 
 <use images/customfilteredmusic.png>
-Package pdftex.def Info: images/customfilteredmusic.png used on input line 191.
+Package pdftex.def Info: images/customfilteredmusic.png used on input line 193.
 
 (pdftex.def)             Requested size: 390.0pt x 200.71925pt.
- (./report.bbl
+ [8 <./images/customfilteredvoice.png (PNG copy)>] <images/matlabfiltervoice.pn
+g, id=55, 1445.4pt x 743.8992pt>
+File: images/matlabfiltervoice.png Graphic file (type png)
+
+<use images/matlabfiltervoice.png>
+Package pdftex.def Info: images/matlabfiltervoice.png used on input line 203.
+(pdftex.def)             Requested size: 390.0pt x 200.71925pt.
+
+<images/matlabfiltermusic.png, id=56, 1445.4pt x 743.8992pt>
+File: images/matlabfiltermusic.png Graphic file (type png)
+
+<use images/matlabfiltermusic.png>
+Package pdftex.def Info: images/matlabfiltermusic.png used on input line 209.
+(pdftex.def)             Requested size: 390.0pt x 200.71925pt.
+
+<images/figure6.png, id=57, 429.2838pt x 310.761pt>
+File: images/figure6.png Graphic file (type png)
+ <use images/figure6.png>
+Package pdftex.def Info: images/figure6.png used on input line 219.
+(pdftex.def)             Requested size: 390.0pt x 282.3235pt.
+
+[9 <./images/customfilteredmusic.png (PNG copy)>] [10 <./images/matlabfiltervoi
+ce.png (PNG copy)> <./images/matlabfiltermusic.png (PNG copy)>]
+<images/figure6a.png, id=64, 1445.4pt x 743.8992pt>
+File: images/figure6a.png Graphic file (type png)
+ <use images/figure6a.png>
+Package pdftex.def Info: images/figure6a.png used on input line 231.
+(pdftex.def)             Requested size: 390.0pt x 200.71925pt.
+
+<images/figure6b.png, id=65, 1445.4pt x 743.8992pt>
+File: images/figure6b.png Graphic file (type png)
+ <use images/figure6b.png>
+Package pdftex.def Info: images/figure6b.png used on input line 239.
+(pdftex.def)             Requested size: 390.0pt x 200.71925pt.
+
+(./report.bbl
 Underfull \hbox (badness 1147) in paragraph at lines 4--7
 []\OT1/cmr/m/n/12 Matlab doc-u-men-ta-tion.  $\OT1/cmtt/m/n/12 https : / / uk .
  mathworks . com / help / matlab /
  []
 
-[7 <./images/figure3.png (PNG copy)>]
-Overfull \vbox (114.9719pt too high) has occurred while \output is active []
+[11 <./images/figure6.png (PNG copy)>]
+Overfull \vbox (51.87183pt too high) has occurred while \output is active []
 
 
-[8 <./images/customfilteredvoice.png (PNG copy)> <./images/customfilteredmusic.
-png (PNG copy)>]) [9] (./report.aux) ) 
+[12 <./images/figure6a.png (PNG copy)> <./images/figure6b.png (PNG copy)>])
+[13] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 15256 strings out of 493064
- 288290 string characters out of 6138159
- 346865 words of memory out of 5000000
- 18479 multiletter control sequences out of 15000+600000
+ 15289 strings out of 493064
+ 289096 string characters out of 6138159
+ 346929 words of memory out of 5000000
+ 18507 multiletter control sequences out of 15000+600000
  10854 words of font info for 39 fonts, out of 8000000 for 9000
  1137 hyphenation exceptions out of 8191
  62i,10n,56p,1347b,288s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
-12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on report.pdf (10 pages, 488795 bytes).
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+csc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmtt12.pfb>
+Output written on report.pdf (14 pages, 790041 bytes).
 PDF statistics:
- 95 PDF objects out of 1000 (max. 8388607)
- 61 compressed objects within 1 object stream
+ 113 PDF objects out of 1000 (max. 8388607)
+ 70 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 58 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 83 words of extra memory for PDF output out of 10000 (max. 10000000)
 

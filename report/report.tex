@@ -197,13 +197,49 @@ The music recording still held most of its features, especially the glissando to
 
 The Matlab bandpass filter was less destructive. For the voice filter, words were still unintelligible, and it sounded as though I had a cold. Looking into this, I found that our nose and sinuses act as a resonance chamber, which essentially amplifies certain frequencies in speech, mostly the lower frequencies. Similar to the effect the hollow body of a guitar has on the sound it produces. 
 
-The frequency plots for both showed a gradual drop off in magnitude of edge frequencies, rather than the sharp drop off seen in the custom filter. I struggled to find exactly what filter is used by the \emph{bandpass} function, but the gradual roll-off without any ripples suggests it is likely to be a Butterworth filter. 
+The frequency plots for both (Figure \ref{fig:matlabvoicefilter} and Figure \ref{fig:matlabmusicfilter})showed a gradual drop off in magnitude of edge frequencies, rather than the sharp drop off seen in the custom filter. I struggled to find exactly what filter is used by the \emph{bandpass} function, but the gradual roll-off without any ripples suggests it is likely to be a Butterworth filter \cite{butterworth_1930}. The only information was that the filter used a minimum-order filter, and this roll off is made more gradual at low orders in a Butterworth filter. Increasing the order introduces more ripple however, which degrades the audio quality.
+
+\begin{figure}[!ht]
+  \includegraphics[width=\linewidth]{images/matlabfiltervoice.png}
+  \caption{Frequency and time domain plot of music after appylying the built-in filter.}
+  \label{fig:matlabvoicefilter}
+\end{figure}
+
+\begin{figure}[!ht]
+  \includegraphics[width=\linewidth]{images/matlabfiltermusic.png}
+  \caption{Frequency and time domain plot of music after appylying the built-in filter.}
+  \label{fig:matlabmusicfilter}
+\end{figure}
 
 \section{Identifying Noise}
 
+In order to identify the noise, a frequency plot had to be produced. Using fast Fourier transform as before, Figure \ref{fig:noisefrequencydomain} was produced which clearly shows the frequency of the incredibly unpleasant whine. Zooming in shows that the peak occurred at 500Hz.
 
+\begin{figure}[!ht]
+  \includegraphics[width=\linewidth]{images/figure6.png}
+  \caption{Frequency plot of audio in noise.}
+  \label{fig:noisefrequencydomain}
+\end{figure}
 
 \section{Removing Noise}
+
+To remove the noise, two approaches were taken.
+
+The first involved using a bandstop, which removed only the small frequency range that the noise occurred in. This unfortunately introduced a metallic ringing sound to the blocks of speech in the audio, though it did a brilliant job of removing the high frequency whine (Figure \ref{fig:noisebandstopped}). The high frequency ringing sound added to speech was further evidence that the Butterworth filter was used for Matlabs bandstop/bandpass functions, as one of the characteristics of this filter is overshoot and ringing in step response. The new peaks introduced in the frequency plot are likely the contributors to the ringing sound. The highest frequency was past the range of human hearing, and so its magnitude was not a problem.
+
+\begin{figure}[!ht]
+  \includegraphics[width=\linewidth]{images/figure6a.png}
+  \caption{Frequency and time domain plot of audio in noise once filtered using bandstop.}
+  \label{fig:noisebandstopped}
+\end{figure}
+
+The alternative approach involved using a low pass filter to remove everything below the noise frequency. This was also successful, though the ringing was still present above the voice. The large high frequency peaks also were not present, suggesting the ringing present in the voice was being caused by a lower frequency component.
+
+\begin{figure}[!ht]
+  \includegraphics[width=\linewidth]{images/figure6b.png}
+  \caption{Frequency and time domain plot of audio in noise once filtered using lowpass.}
+  \label{fig:noiselowpassed}
+\end{figure}
 \section{Extension}
 
 \bibliographystyle{unsrt}

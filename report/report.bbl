@@ -14,4 +14,9 @@ Frequencies for equal-tempered scale.
 \newblock \url{https://pages.mtu.edu/~suits/notefreqs.html}.
 \newblock Accessed: 2018-11-2.
 
+\bibitem{butterworth_1930}
+Stephen Butterworth.
+\newblock On the theory of filter amplifiers.
+\newblock {\em Wireless Engineer}, 7:536--541, 1930.
+
 \end{thebibliography}

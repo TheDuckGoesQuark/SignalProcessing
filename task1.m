@@ -8,7 +8,7 @@ middleCFreq = 261.6;
 
 sampleFrequency = 48*10^3; % Sample rate used in high quality music
 sampleDuration = 1 / sampleFrequency;
-totalDuration = 1;
+totalDuration = 10;
 [signal, timeAxis] = generateSignal(middleCFreq, sampleFrequency, totalDuration);
 
 % Plotting time domain

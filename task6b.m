@@ -11,18 +11,32 @@ filename='audio_in_noise.wav';
 % Remove noise
 signal = lowpass(signal, 4000, sampleFrequency);
 
+signal = convertToMono(signal);
+sampleDuration = 1 / sampleFrequency;
+totalDuration = sampleDuration * length(signal);
+timeAxis = 0:sampleDuration:totalDuration-sampleDuration;
+
 [magnitudeAxis, frequencyAxis] = frequencyDomainPlot(signal, sampleFrequency);
+frequencyAxis = frequencyAxis / 1000;
 
 % Plotting frequency domain
-figure(6)
-ax1 = subplot(1,1,1);
+fig6a = figure(6);
+ax2 = subplot(2,1,2);
 plot(frequencyAxis, magnitudeAxis);
 xlabel('Frequency (kHz)');
 ylabel('Magnitude');
-title('Frequency Domain of the worst noise ever once filtered.');
+title('Frequency Domain of the worst noise ever with bandstop applied.');
 zoom xon;
 axis auto;
 
-playSignal(signal, sampleFrequency)
+% Plotting time domain
+ax1 = subplot(2, 1, 1);
+plot(timeAxis, signal);
+xlabel('Time (s)');
+ylabel('Amplitude (m)');
+title('Time Domain of audio in noise with bandstop applied.');
+zoom xon;
 
+playSignal(signal, sampleFrequency)
+saveas(fig6a, "figure6b.png", "png")
 
