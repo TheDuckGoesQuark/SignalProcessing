@@ -9,7 +9,7 @@ filename='myvoice.wav';
 sampleDuration = 1 / sampleFrequency;
 totalDuration = length(signal) * sampleDuration;
 
-signal = builtInBandPass(signal, sampleFrequency, 1000, 2000);
+signal = builtInBandPass(signal, sampleFrequency, 1000, 2500);
 
 % Calculate frequency domain
 fourierTransform = fft(signal);
@@ -21,8 +21,8 @@ magnitudeAxis = abs(fourierTransform);
 frequencyAxis = frequencyAxis / 1000;
 
 % Plotting frequency domain
-figure(5)
-ax2 = subplot(2, 2, 1);
+fig4a = figure(4);
+ax2 = subplot(2, 1, 1);
 plot(frequencyAxis, magnitudeAxis);
 xlabel('Frequency (kHz)');
 ylabel('Magnitude');
@@ -36,16 +36,19 @@ xlim(ax2, [0 inf]);
 signal = ifft(ifftshift(fourierTransform));
 timeAxis = 0:sampleDuration:totalDuration-sampleDuration;
 
-ax1 = subplot(2, 2, 2);
+ax1 = subplot(2, 1, 2);
 plot(timeAxis, signal);
 xlabel('Time (s)');
 ylabel('Amplitude (m)');
 title('Time Domain of filtered voice');
 zoom xon;
 
-% playSignal(signal, sampleFrequency, totalDuration)
+playSignal(signal, sampleFrequency)
+saveas(fig4a, "matlabfiltervoice.png", "png");
 
 %%%%%%%%%%%%%%%%%%%% Music File %%%%%%%%%%%%%%%%%%%%%
+
+fig4b = figure(5);
 
 filename='mii-channel-music.mp3';
 [signal, sampleFrequency] = audioread(filename);
@@ -54,7 +57,7 @@ signal = trimToSecs(signal, sampleFrequency, 9);
 signal = convertToMono(signal);
 
 % Remove frequencies inside of sub band
-signal = builtInBandPass(signal, sampleFrequency, 2000, 18000);
+signal = builtInBandPass(signal, sampleFrequency, 1000, 2500);
 
 sampleDuration = 1 / sampleFrequency;
 totalDuration = length(signal) * sampleDuration;
@@ -69,7 +72,7 @@ magnitudeAxis = abs(fourierTransform);
 frequencyAxis = frequencyAxis / 1000;
 
 % Plotting frequency domain
-ax2 = subplot(2, 2, 3);
+ax2 = subplot(2, 1, 1);
 plot(frequencyAxis, magnitudeAxis);
 xlabel('Frequency (kHz)');
 ylabel('Magnitude');
@@ -83,13 +86,12 @@ xlim(ax2, [0 5]);
 signal = ifft(ifftshift(fourierTransform));
 timeAxis = 0:sampleDuration:totalDuration-sampleDuration;
 
-ax1 = subplot(2, 2, 4);
+ax1 = subplot(2, 1, 2);
 plot(timeAxis, signal);
 xlabel('Time (s)');
 ylabel('Amplitude (m)');
 title('Time Domain of filtered Mii Channel Music');
 zoom xon;
 
-playSignal(signal, sampleFrequency, totalDuration)
-
-% Audioread, plot, fft,ifft, audioplayer, play, audiowrite, saveas, hist
+playSignal(signal, sampleFrequency)
+saveas(fig4b, "matlabfiltermusic.png", "png");

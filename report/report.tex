@@ -99,7 +99,7 @@ Middle C is approximately 261.6Hz, though concert pitch has varied historically.
 
 Originally a sampling frequency of $2f$ was used, as Nyquist theorem dictates that the sampling rate must be at least double the highest frequency in the signal. However, MATLAB refused to play at this rate, as the documentation states that only values of $1000Hz \leq Fs \leq 384000Hz$ are accepted by the audioplayer function \cite{matlabaudioplayer}. Instead, the sample rate used for high quality music was used instead, $48kHz$. Graphing the wave at $1000Hz$ showed a far less smooth wave in the time domain, though it did not affect the frequency domain plot (Figure \ref{fig:middleclowsample}).
 
-\begin{figure}[h]
+\begin{figure}[!htb]
   \includegraphics[width=\linewidth]{images/figure1at1000.png}
   \caption{Time and Frequency domain of Middle C at a low sample rate.}
   \label{fig:middleclowsample}
@@ -115,7 +115,7 @@ Matlab greatly simplified the process of producing these values over a range of 
 
 The time domain was then graphed, and zoomed in by a factor of 100 so that the actual wave structure was visible (Figure \ref{fig:middlec}). The unit of metres was used for the amplitude, though the perceived amplitude of the sound would actually be dependant on speakers and external settings when played.
 
-\begin{figure}[h]
+\begin{figure}[!htb]
   \includegraphics[width=\linewidth]{images/figure1.png}
   \caption{Time and Frequency domain of Middle C at a high sample rate.}
   \label{fig:middlec}
@@ -133,18 +133,79 @@ The sound produced had a constant intensity and absolutely no variation in pitch
 
 \section{Time Domain}
 
-Plotting the time domain followed a similar process as in Task 1. Instead of hard coding a sample frequency however, it was supplied by the audio file itself. 
+Plotting the time domain followed a similar process as in Task 1. Instead of hard coding a sample frequency however, it was supplied by the audio file itself. From then on, the same process could be applied to the signal as before to produce Figure \ref{fig:voicetimedomain} and Figure \ref{fig:musictimedomain}. 
 
+\begin{figure}[!htb]
+  \includegraphics[width=\linewidth]{images/figure2a.png}
+  \caption{Time domain plot of my voice.}
+  \label{fig:voicetimedomain}
+\end{figure}
 
+Both plots show that the signals are roughly equally as dense. There also appears to be more noise present in the voice recording, as the 'silence' between blocks of speech appears far rougher than the silence between notes in the music plot. There is also more variation in amplitude in the voice plot.
 
+\begin{figure}[!htb]
+  \includegraphics[width=\linewidth]{images/figure2b.png}
+  \caption{Time domain plot of the Mii Channel Music \cite{miichannelmusic}.}
+  \label{fig:musictimedomain}
+\end{figure}
 
 \section{Frequency Domain}
+
+The same function used for Task 1 was reused here, but this time it produced a more interesting spectrum of frequencies. The high sample used in both files resulted in a large empty space in the original frequency plot, and so a limit was applied so that only frequencies up until $7kHz$ were plotted in Figure \ref{fig:voicemusicfrequencydomain}.
+
+\begin{figure}[!ht]
+  \includegraphics[width=\linewidth]{images/figure3.png}
+  \caption{Time domain plot of the Mii Channel Music\cite{miichannelmusic}.}
+  \label{fig:voicemusicfrequencydomain}
+\end{figure}
+
+The voice plot appears to have a much more diverse spectrum compared to the music plot. This is likely due to the music only containing frequencies belonging to the notes being played, which are usually constrained within a key. The glissando near the end of the music likely introduced more frequencies outside of they key however.
+
+The most prevalent frequency in the voice plot is around $125Hz$, which lies on the upper end of the range of male voice fundamental frequencies. The most prevalent frequency in the music plot is around $386Hz$, which is likely to be a 4th octave G in an equal tempered scale \cite{musictonotes}.
+
 \section{Frequency Filtering}
+
+For frequency filtering, I used two methods. The first is my own implementation and the other is using Matlab's \emph{bandpass} function.
+
+For my custom bandpass filter, I took the following steps:
+\begin{enumerate}
+\item Produce the fft of the signal and perform the fft shift.
+\item Produce a frequency axis for the signal.
+\item Zero any values in the frequency axis that are outside the frequency band specified, both in the positive and negative frequencies. 
+\item Set all other values in the frequency axis to 1.
+\item Multiply the fft matrix by the frequency matrix ,effectively zeroing any coefficients that belong to unwanted frequencies.
+\item Reverse the fftshift and fft to produce the original signal.
+\end{enumerate}
+
+This allowed the same function to be used as both a low-pass (0 to x) and high-pass (x to inf) filter, as well as a bandpass filter.
+
+I applied the same filter to both, allowing frequencies in the range 1kHz to 2.5kHz. This removed the most prevalent frequencies from both sound files, whilst still leaving audible features. Both recordings gained a sinister feel. Words became unintelligible in the voice recording. Despite knowing exactly what was said, it was incredibly difficult to work out which part of the clip corresponded to which word, even though the time domain plot still retained most of the original features. The loudness of the track was drastically reduced.
+
+\begin{figure}[!ht]
+  \includegraphics[width=\linewidth]{images/customfilteredvoice.png}
+  \caption{Frequency and time domain plot of my voice after applying the custom filter.}
+  \label{fig:customvoicefilter}
+\end{figure}
+
+The music recording still held most of its features, especially the glissando towards the end. The track sounded as though it was being played through an old radio. After realising the filter had a similar effect on sound as the tone control on an electric guitar, I found out that the this control reduces higher frequencies in the output, which is what had also occurred with the signal in the custom filter.
+
+\begin{figure}[!ht]
+  \includegraphics[width=\linewidth]{images/customfilteredmusic.png}
+  \caption{Frequency and time domain plot of music after appylying the custom filter.}
+  \label{fig:custommusicfilter}
+\end{figure}
+
+The Matlab bandpass filter was less destructive. For the voice filter, words were still unintelligible, and it sounded as though I had a cold. Looking into this, I found that our nose and sinuses act as a resonance chamber, which essentially amplifies certain frequencies in speech, mostly the lower frequencies. Similar to the effect the hollow body of a guitar has on the sound it produces. 
+
+The frequency plots for both showed a gradual drop off in magnitude of edge frequencies, rather than the sharp drop off seen in the custom filter. I struggled to find exactly what filter is used by the \emph{bandpass} function, but the gradual roll-off without any ripples suggests it is likely to be a Butterworth filter. 
+
 \section{Identifying Noise}
+
+
+
 \section{Removing Noise}
 \section{Extension}
 
-\citep{gerardo_schneider}
 \bibliographystyle{unsrt}
 \bibliography{mybib}
 

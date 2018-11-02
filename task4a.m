@@ -15,15 +15,15 @@ fourierTransform = fftshift(fourierTransform);
 frequencyAxis = sampleFrequency / 2 * linspace(-1, 1, sampleFrequency * totalDuration);
 
 % Remove frequencies inside of sub band
-fourierTransform = customBandPass(fourierTransform, frequencyAxis, 1000, 2000);
+fourierTransform = customBandPass(fourierTransform, frequencyAxis, 1000, 2500);
 
 % Produce axis for plotting
 magnitudeAxis = abs(fourierTransform);
 frequencyAxis = frequencyAxis / 1000;
 
 % Plotting frequency domain
-figure(3)
-ax2 = subplot(2, 2, 1);
+fig4a = figure(4);
+ax2 = subplot(2, 1, 1);
 plot(frequencyAxis, magnitudeAxis);
 xlabel('Frequency (kHz)');
 ylabel('Magnitude');
@@ -37,16 +37,18 @@ xlim(ax2, [0 inf]);
 signal = ifft(ifftshift(fourierTransform));
 timeAxis = 0:sampleDuration:totalDuration-sampleDuration;
 
-ax1 = subplot(2, 2, 2);
+ax1 = subplot(2, 1, 2);
 plot(timeAxis, signal);
 xlabel('Time (s)');
 ylabel('Amplitude (m)');
 title('Time Domain of filtered voice');
 zoom xon;
 
-% playSignal(signal, sampleFrequency, totalDuration)
+playSignal(signal, sampleFrequency)
+saveas(fig4a, "figure4a.png", "png");
 
 %%%%%%%%%%%%%%%%%%%% Music File %%%%%%%%%%%%%%%%%%%%%
+fig4b = figure(5);
 
 filename='mii-channel-music.mp3';
 [signal, sampleFrequency] = audioread(filename);
@@ -63,14 +65,14 @@ fourierTransform = fftshift(fourierTransform);
 frequencyAxis = sampleFrequency / 2 * linspace(-1, 1, sampleFrequency * totalDuration);
 
 % Remove frequencies inside of sub band
-fourierTransform = customBandPass(fourierTransform, frequencyAxis, 2000, inf);
+fourierTransform = customBandPass(fourierTransform, frequencyAxis, 1000, 2500);
 
 % Produce axis for plotting
 magnitudeAxis = abs(fourierTransform);
 frequencyAxis = frequencyAxis / 1000;
 
 % Plotting frequency domain
-ax2 = subplot(2, 2, 3);
+ax2 = subplot(2, 1, 1);
 plot(frequencyAxis, magnitudeAxis);
 xlabel('Frequency (kHz)');
 ylabel('Magnitude');
@@ -84,11 +86,13 @@ xlim(ax2, [0 5]);
 signal = ifft(ifftshift(fourierTransform));
 timeAxis = 0:sampleDuration:totalDuration-sampleDuration;
 
-ax1 = subplot(2, 2, 4);
+ax1 = subplot(2, 1, 2);
 plot(timeAxis, signal);
 xlabel('Time (s)');
 ylabel('Amplitude (m)');
 title('Time Domain of filtered Mii Channel Music');
 zoom xon;
 
-playSignal(signal, sampleFrequency, totalDuration)
+playSignal(signal, sampleFrequency)
+
+saveas(fig4b, "figure4b.png", "png");

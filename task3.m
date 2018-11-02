@@ -11,14 +11,15 @@ filename='myvoice.wav';
 frequencyAxis = frequencyAxis / 1000;
 
 % Plotting frequency domain
-figure(3)
-ax2 = subplot(2, 1, 1);
+fig3 = figure(3);
+ax1 = subplot(2, 1, 1);
 plot(frequencyAxis, magnitudeAxis);
 xlabel('Frequency (kHz)');
 ylabel('Magnitude');
 title('Frequency Domain of my voice');
 zoom xon;
 axis auto;
+xlim(ax1, [0 7]);
 
 %%%%%%%%%%%%%%%%%%%% Music File %%%%%%%%%%%%%%%%%%%%%
 
@@ -39,7 +40,8 @@ xlabel('Frequency (kHz)');
 ylabel('Magnitude');
 title('Frequency Domain of Mii Channel Music');
 zoom xon;
-zoom(10000);
 axis auto;
-xlim(ax2, [0 5]);
+xlim(ax2, [0 7]);
+
+% saveas(fig3, "figure3.png", "png")
     
